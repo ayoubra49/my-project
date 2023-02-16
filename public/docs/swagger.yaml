@@ -1,0 +1,98 @@
+swagger: "2.0"
+info:
+  title: API Documentation for Bookings
+  version: 1.0.0
+paths:
+  /:
+    post:
+      tags:
+        - Bookings
+      summary: Create a new booking
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: booking
+          required: true
+          schema:
+            type: object
+            properties:
+              food_truck_id:
+                type: integer
+                description: ID of the food truck being booked
+              date:
+                type: string
+                format: date
+                description: Booking date
+      responses:
+        201:
+          description: The booking was created successfully
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID of the newly created booking
+              food_truck_id:
+                type: integer
+                description: ID of the food truck being booked
+              date:
+                type: string
+                format: date
+                description: Booking date
+        400:
+          description: Bad request
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Error message
+
+    get:
+      tags:
+        - Bookings
+      summary: Get a list of all bookings
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of all bookings
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the booking
+                food_truck:
+                  type: string
+                  description: Name of the food truck being booked
+                booking_date:
+                  type: string
+                  format: date
+                  description: Booking date
+  /api/foodtrucks:
+    get:
+      tags:
+        - Food Trucks
+      summary: Get a list of all food trucks
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List of all food trucks
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ID of the food truck
+                name:
+                  type: string
+                  description: Name of the food truck

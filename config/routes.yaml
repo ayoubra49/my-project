@@ -1,0 +1,14 @@
+api_bookings_create:
+  path: /api/bookings
+  controller: App\Controller\BookingController::create
+  methods: [POST]
+
+api_bookings_list:
+  path: /api/bookings
+  controller: App\Controller\BookingController::list
+  methods: [GET]
+
+api_food_trucks_list:
+  path: /api/foodtrucks
+  controller: App\Controller\BookingController::foodTruckList
+  methods: [GET]
